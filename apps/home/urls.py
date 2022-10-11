@@ -8,6 +8,8 @@ from apps.home import views
 
 urlpatterns = [
 
+    path('my-page', views.profile, name='my_page'),
+
     # The home page
     path('', views.index, name='home'),
 
