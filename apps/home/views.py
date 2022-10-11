@@ -9,6 +9,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
+@login_required(login_url="/login/")
+def profile(request):
+
+    context = {'segment': 'profile'}
+    context['first_name'] = 'John DOE'
+
+    html_template = loader.get_template('profile/my-page.html')
+    return HttpResponse(html_template.render(context, request))
 
 @login_required(login_url="/login/")
 def index(request):
@@ -16,7 +24,6 @@ def index(request):
 
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))
-
 
 @login_required(login_url="/login/")
 def pages(request):
